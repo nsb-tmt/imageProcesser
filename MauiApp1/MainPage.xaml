@@ -1,0 +1,112 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiApp1.MainPage">
+
+    <ScrollView>
+        <StackLayout>
+            <Button
+                x:Name="input"
+                Clicked="OnTransitionClickedProcessing"
+                IsVisible="true"
+                Text="画像を読み込む"
+                WidthRequest="200" />
+
+            <StackLayout x:Name="process" IsVisible="false">
+                <Image
+                    x:Name="imageView"
+                    Margin="20,20,20,20"
+                    BackgroundColor="White"
+                    HeightRequest="600"
+                    WidthRequest="600" />
+                <HorizontalStackLayout HorizontalOptions="Center">
+                    <StackLayout Margin="20,20,20,20">
+                        <Label HorizontalOptions="Center" Text="グレースケール" />
+                        <HorizontalStackLayout>
+                            <RadioButton
+                                x:Name="MonoON"
+                                Content="ON"
+                                CheckedChanged="onChangedColor"/>
+                            <RadioButton
+                                x:Name="MonoOFF"
+                                Content="OFF"
+                                CheckedChanged="onChangedColor"
+                                IsChecked="True"/>
+                        </HorizontalStackLayout>
+                    </StackLayout>
+                    <!--
+                    <StackLayout Margin="20,20,20,20">
+                        <Label 
+                            HorizontalOptions="Center"
+                            Text="画像切り出し" />
+                        <HorizontalStackLayout>
+                            <RadioButton
+                                Content="ON"/>
+                            <RadioButton
+                                Content="OFF"
+                                IsChecked="True"/>
+                        </HorizontalStackLayout>
+                    </StackLayout>
+                    -->
+                    <StackLayout Margin="20,20,20,20">
+                        <Label HorizontalOptions="Center" Text="画像回転" />
+                        <HorizontalStackLayout>
+                            <Button
+                                x:Name="LeftRotate"
+                                Clicked="onChangedRotate"
+                                Margin="20,20,20,20"
+                                Text="←　左回転" />
+                            <Button
+                                x:Name="RightRotate"
+                                Clicked="onChangedRotate"
+                                Margin="20,20,20,20"
+                                Text="右回転　→" />
+                        </HorizontalStackLayout>
+                    </StackLayout>
+                </HorizontalStackLayout>
+                <HorizontalStackLayout HorizontalOptions="Center">
+                    <HorizontalStackLayout>
+                    <Entry
+                        x:Name="saveFileName"
+                        Margin="20,20,20,20"
+                        HeightRequest="50"
+                        Placeholder="保存時ファイル名"
+                        WidthRequest="400" />
+                        <Label
+                        x:Name="saveFileExtension"
+                        VerticalOptions="Center" />
+                    </HorizontalStackLayout>
+                </HorizontalStackLayout>
+                <Button
+                    Margin="20,20,20,20"
+                    Clicked="OnTransitionClickedOutput"
+                    Text="保存プレビューを表示"
+                    WidthRequest="200" />
+            </StackLayout>
+
+            <StackLayout x:Name="output" IsVisible="false">
+                <Image
+                    x:Name="imagePreview"
+                    Margin="20,20,20,20"
+                    BackgroundColor="White"
+                    HeightRequest="600"
+                    WidthRequest="600" />
+                <Label
+                    x:Name="saveFilePath"
+                    HorizontalOptions="Center"/>
+                
+                <Button
+                    Margin="20,20,20,20"
+                    Clicked="OnTransitionClickedInput"
+                    Text="画像を保存する"
+                    WidthRequest="200" />
+                <Button
+                    Margin="20,20,20,20"
+                    Clicked="OnTransitionClickedReEdit"
+                    Text="編集に戻る"
+                    WidthRequest="200" />
+            </StackLayout>
+        </StackLayout>
+    </ScrollView>
+
+</ContentPage>
